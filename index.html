@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Team Generator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <h1>Team Generator</h1>
+
+  <label for="names">Enter names (one per line):</label><br>
+  <textarea id="names" placeholder="Alice\nBob\nCharlie\nDavid"></textarea><br><br>
+
+  <label for="teamCount">Number of Teams:</label>
+  <input type="number" id="teamCount" min="1" value="2"><br><br>
+
+  <button onclick="generateTeams()">Generate Teams</button>
+
+  <div class="teams" id="teamDisplay"></div>
+
+  <script>
+    function shuffle(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+      return array;
+    }
+
+    function generateTeams() {
+      const namesText = document.getElementById('names').value.trim();
+      const teamCount = parseInt(document.getElementById('teamCount').value);
+      const names = shuffle(namesText.split('\n').map(n => n.trim()).filter(n => n));
+      
+      if (names.length === 0 || teamCount < 1) {
+        alert("Please enter valid names and team count.");
+        return;
+      }
+
+      const teams = Array.from({ length: teamCount }, () => []);
+      names.forEach((name, i) => {
+        teams[i % teamCount].push(name);
+      });
+
+      const teamDisplay = document.getElementById('teamDisplay');
+      teamDisplay.innerHTML = '';
+      teams.forEach((team, idx) => {
+        const div = document.createElement('div');
+        div.className = 'team';
+        div.innerHTML = `<strong>Team ${idx + 1}:</strong><br>${team.join('<br>')}`;
+        teamDisplay.appendChild(div);
+      });
+    }
+  </script>
+
+</body>
+</html>
