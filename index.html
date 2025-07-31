@@ -17,6 +17,11 @@
     <input type="number" id="teamCount" min="1" value="2"><br><br>
   
     <button onclick="generateTeams()">Generate Teams</button>
+    
+    <div style="margin-top: 20px; text-align: center;">
+      <button onclick="copyLink()" style="width: auto; padding: 8px 16px; margin-bottom: 8px;">📋 Copy Link</button>
+      <p style="font-size: 14px; color: white;">Like this tool? Share it with friends!</p>
+    </div>
   
     <div class="teams" id="teamDisplay"></div>
   
@@ -54,6 +59,16 @@
         });
       }
     </script>
+    <script>
+      function copyLink() {
+        const url = window.location.href;
+        navigator.clipboard.writeText(url).then(() => {
+          alert("Link copied to clipboard!");
+        }).catch(err => {
+          alert("Failed to copy link.");
+        });
+      }
+    <\script>
   </div>
 </body>
 </html>
