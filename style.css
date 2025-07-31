@@ -1,7 +1,7 @@
 /* Reset & Basics */
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f9f9fb;
+  background-color: #070395;
   color: #333;
   margin: 0;
   padding: 0;
@@ -11,7 +11,7 @@ body {
   max-width: 800px;
   margin: 40px auto;
   padding: 20px;
-  background-color: #ffffff;
+  background-color: #091dd1;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   border-radius: 12px;
 }
@@ -19,7 +19,8 @@ body {
 /* Typography */
 h1 {
   text-align: center;
-  color: white;
+  color: #ffffff;
+
   margin-bottom: 24px;
 }
 
@@ -28,6 +29,7 @@ label {
   display: block;
   margin-bottom: 8px;
   font-weight: 600;
+  color: hwb(240 96% 3% / 0.832);
 }
 
 textarea,
